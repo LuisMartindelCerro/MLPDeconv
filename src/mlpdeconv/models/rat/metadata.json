@@ -1,0 +1,42 @@
+{
+  "model_name": "rat_mlp_deconv",
+  "species": "rat",
+  "granularity": "sub_celltype",
+  "checkpoint_file": "rat_mlp_deconv_checkpoint.pt",
+  "created_at": "2026-07-09",
+  "training_reference": "MLPDeconv_rat",
+  "input_type": "bulk_rna_counts",
+  "gene_count": 15774,
+  "cell_types": [
+    "exc_neurons",
+    "inh_neurons",
+    "hom_mg",
+    "inf_mg",
+    "prol_mg",
+    "oligodendrocytes",
+    "opc",
+    "astrocytes"
+  ],
+  "normalization": {
+    "method": "CPM_log1p",
+    "scale_factor": 1000000.0
+  },
+  "model_architecture": {
+    "type": "MLPDeconvRegressor",
+    "hidden_sizes": [1024],
+    "dropout": 0.1,
+    "output_activation": "softmax"
+  },
+  "training": {
+    "objective": "validation_rmse",
+    "best_value": 0.01409890316426754,
+    "loss": "MSE",
+    "batch_size": 256,
+    "learning_rate": 0.0003278187653397617,
+    "weight_decay": 4.982752357076448e-07,
+    "max_steps": 1500,
+    "validation_every": 100,
+    "patience": 6
+  },
+  "notes": "Pretrained rat sub-celltype model."
+}
